@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E8389D20268043A4004AA0F1 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8389D1F268043A4004AA0F1 /* Users.swift */; };
+		E8389D23268052F1004AA0F1 /* viewControllerBuscar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8389D22268052F1004AA0F1 /* viewControllerBuscar.swift */; };
+		E8389D252680531D004AA0F1 /* Peliculas.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8389D242680531D004AA0F1 /* Peliculas.swift */; };
+		E8389D27268060CF004AA0F1 /* viewControllerAgregar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8389D26268060CF004AA0F1 /* viewControllerAgregar.swift */; };
 		E8AD543126801F6700908406 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AD543026801F6700908406 /* AppDelegate.swift */; };
 		E8AD543326801F6700908406 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AD543226801F6700908406 /* SceneDelegate.swift */; };
 		E8AD543526801F6700908406 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AD543426801F6700908406 /* ViewController.swift */; };
@@ -16,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E8389D1F268043A4004AA0F1 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		E8389D22268052F1004AA0F1 /* viewControllerBuscar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewControllerBuscar.swift; sourceTree = "<group>"; };
+		E8389D242680531D004AA0F1 /* Peliculas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Peliculas.swift; sourceTree = "<group>"; };
+		E8389D26268060CF004AA0F1 /* viewControllerAgregar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewControllerAgregar.swift; sourceTree = "<group>"; };
 		E8AD542D26801F6700908406 /* creando.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = creando.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8AD543026801F6700908406 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8AD543226801F6700908406 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +45,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E8389D1E2680438D004AA0F1 /* Modelos */ = {
+			isa = PBXGroup;
+			children = (
+				E8389D1F268043A4004AA0F1 /* Users.swift */,
+				E8389D242680531D004AA0F1 /* Peliculas.swift */,
+			);
+			path = Modelos;
+			sourceTree = "<group>";
+		};
+		E8389D21268052D5004AA0F1 /* Views Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E8AD543426801F6700908406 /* ViewController.swift */,
+				E8389D22268052F1004AA0F1 /* viewControllerBuscar.swift */,
+				E8389D26268060CF004AA0F1 /* viewControllerAgregar.swift */,
+			);
+			path = "Views Controllers";
+			sourceTree = "<group>";
+		};
 		E8AD542426801F6700908406 = {
 			isa = PBXGroup;
 			children = (
@@ -56,9 +83,10 @@
 		E8AD542F26801F6700908406 /* creando */ = {
 			isa = PBXGroup;
 			children = (
+				E8389D21268052D5004AA0F1 /* Views Controllers */,
+				E8389D1E2680438D004AA0F1 /* Modelos */,
 				E8AD543026801F6700908406 /* AppDelegate.swift */,
 				E8AD543226801F6700908406 /* SceneDelegate.swift */,
-				E8AD543426801F6700908406 /* ViewController.swift */,
 				E8AD543626801F6700908406 /* Main.storyboard */,
 				E8AD543926801F6900908406 /* Assets.xcassets */,
 				E8AD543B26801F6900908406 /* LaunchScreen.storyboard */,
@@ -138,9 +166,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8389D252680531D004AA0F1 /* Peliculas.swift in Sources */,
+				E8389D20268043A4004AA0F1 /* Users.swift in Sources */,
 				E8AD543526801F6700908406 /* ViewController.swift in Sources */,
+				E8389D27268060CF004AA0F1 /* viewControllerAgregar.swift in Sources */,
 				E8AD543126801F6700908406 /* AppDelegate.swift in Sources */,
 				E8AD543326801F6700908406 /* SceneDelegate.swift in Sources */,
+				E8389D23268052F1004AA0F1 /* viewControllerBuscar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
