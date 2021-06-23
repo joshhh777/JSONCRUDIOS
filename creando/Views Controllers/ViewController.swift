@@ -37,11 +37,13 @@ class ViewController: UIViewController {
         let contraseña = TextoContraseña.text!
         let url = ruta + "nombre=\(usuario)&clave=\(contraseña)"
         let crearURL = url.replacingOccurrences(of: " ", with: "%20")
+        print("aaaaaaaaaaaaaaa: \(crearURL)")
         validarUsuario(ruta: crearURL){
             if self.usuarios.count <= 0{
                 print("Nombre de usuaro  y/o contraseña incorrectos")
             }else{
                 print("Logueo Exitoso")
+                
                 self.performSegue(withIdentifier: "segueLogueo", sender: nil)
                 for data in self.usuarios{
                     print("id:\(data.id),nombre:\(data.nombre),email:\(data.email)")
@@ -49,6 +51,8 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

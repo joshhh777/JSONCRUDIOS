@@ -17,84 +17,87 @@ class viewControllerAgregar: UIViewController {
     @IBOutlet weak var botonGuardar: UIButton!
     var pelicula:Peliculas?
     
-    func metodoPOST(ruta:String, datos:[String:Any]){
-        let url : URL = URL(string: ruta)!
-        var request = URLRequest(url: url)
-        let session = URLSession.shared
-        request.httpMethod = "POST"
-        let params = datos
-        
-        do{
-            request.httpBody = try JSONSerialization.data(withJSONObject: params, options: JSONSerialization.WritingOptions.prettyPrinted)
-        }catch{
-            
-        }
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Acept")
-        let task = session.dataTask(with: request, completionHandler:
-        {(data, response, error) in
-            if (data != nil){
-                do{
-                    let dict = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableLeaves)
-                    print(dict);
-                }catch{
-            
-                }
-            }
-            })
-        task.resume()
-    }
-    
-    func metodoPUT(ruta:String, datos:[String:Any]){
-        let url : URL = URL(string: ruta)!
-        var request = URLRequest(url: url)
-        let session = URLSession.shared
-        request.httpMethod = "PUT"
-        let params = datos
-        
-        do{
-            request.httpBody = try JSONSerialization.data(withJSONObject: params, options: JSONSerialization.WritingOptions.prettyPrinted)
-        }catch{
-            
-        }
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Acept")
-        let task = session.dataTask(with: request, completionHandler:
-        {(data, response, error) in
-            if (data != nil){
-                do{
-                    let dict = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableLeaves)
-                    print(dict);
-                }catch{
-            
-                }
-            }
-            })
-        task.resume()
-    }
-    
     @IBAction func btnGuardar(_ sender: Any) {
         let nombre = TextoNombre.text!
         let genero = TextoGenero.text!
         let duracion = TextoDuracion.text!
-        let datos = ["usuarioId": 1, "nombre": "\(nombre)", "genero": "\(genero)", "duracion:": "\(duracion)"] as Dictionary<String, Any>
+        let datos = ["usuarioId": 1, "nombre": "\(nombre)", "genero": "\(genero)", "duracion": "\(duracion)"] as Dictionary<String, Any>
         let ruta = "http://localhost:3000/peliculas"
         metodoPOST(ruta: ruta, datos: datos)
-        navigationController?.popViewController(animated: true)	
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func btnActualizar(_ sender: Any) {
         let nombre = TextoNombre.text!
         let genero = TextoGenero.text!
         let duracion = TextoDuracion.text!
-        let datos = ["usuarioId": 1, "nombre": "\(nombre)", "genero": "\(genero)", "duracion:": "\(duracion)"] as Dictionary<String, Any>
-        let ruta = "http://localhost:3000/peliculas"
+        let datos = ["usuarioId": 4, "nombre": "\(nombre)", "genero": "\(genero)", "duracion": "\(duracion)"] as Dictionary<String, Any>
+        let ruta = "http://localhost:3000/peliculas/\(pelicula!.id)"
         metodoPUT(ruta: ruta, datos: datos)
         navigationController?.popViewController(animated: true)
     }
     
+    func metodoPOST(ruta:String, datos:Dictionary<String, Any>){
+        let url : URL = URL(string: ruta)!
+        var request = URLRequest(url: url)
+        let session = URLSession.shared
+        request.httpMethod = "POST"
+        let params = datos
+
+        do{
+            request.httpBody = try JSONSerialization.data(withJSONObject: params, options: JSONSerialization.WritingOptions.prettyPrinted)
+            print("parametrosss: \(params)")
+        }catch{
+        }
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        let task = session.dataTask(with: request, completionHandler:
+        {(data, response, error) in
+            if (data != nil){
+                do{
+                    let dict = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableLeaves)
+                    print("Dataaaaaaaaa cancino: \(data!)");
+                    print("JSONNNNN cancino: \(dict)");
+                }catch{
+                    print("Error: \(error)")
+                }
+            }
+            })
+        task.resume()
+    }
+    
+    func metodoPUT(ruta:String, datos:Dictionary<String, Any>){
+        let url : URL = URL(string: ruta)!
+        var request = URLRequest(url: url)
+        let session = URLSession.shared
+        request.httpMethod = "PUT"
+        let params = datos
+
+        do{
+            request.httpBody = try JSONSerialization.data(withJSONObject: params, options: JSONSerialization.WritingOptions.prettyPrinted)
+            print("parametrosss: \(params)")
+        }catch{
+        }
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        let task = session.dataTask(with: request, completionHandler:
+        {(data, response, error) in
+            if (data != nil){
+                do{
+                    let dict = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableLeaves)
+                    print("Dataaaaaaaaa cancino: \(data!)");
+                    print("JSONNNNN cancino: \(dict)");
+                }catch{
+                    print("Error: \(error)")
+                }
+            }
+            })
+        task.resume()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if pelicula == nil{
             botonGuardar.isEnabled = true
             botonActual.isEnabled = false
@@ -105,6 +108,7 @@ class viewControllerAgregar: UIViewController {
             TextoGenero.text = pelicula!.genero
             TextoDuracion.text = pelicula!.duracion
         }
+ 
 
         // Do any additional setup after loading the view.
     }
